@@ -14,8 +14,11 @@ void EmptyLinkFunctionForGeneratedCodeBasePawn() {}
 // ********** Begin Cross Module References ********************************************************
 BATTLEBLASTER_API UClass* Z_Construct_UClass_ABasePawn();
 BATTLEBLASTER_API UClass* Z_Construct_UClass_ABasePawn_NoRegister();
+BATTLEBLASTER_API UClass* Z_Construct_UClass_AProjectile_NoRegister();
+COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 ENGINE_API UClass* Z_Construct_UClass_APawn();
 ENGINE_API UClass* Z_Construct_UClass_UCapsuleComponent_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 UPackage* Z_Construct_UPackage__Script_BattleBlaster();
 // ********** End Cross Module References **********************************************************
@@ -76,10 +79,27 @@ struct Z_Construct_UClass_ABasePawn_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "BasePawn.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ProjectileSpawnPoint_MetaData[] = {
+		{ "Category", "BasePawn" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "BasePawn.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ProjectileClass_MetaData[] = {
+		{ "Category", "BasePawn" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// to access Projectile blueprint in this class , set the BP frome the editor\n" },
+#endif
+		{ "ModuleRelativePath", "BasePawn.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "to access Projectile blueprint in this class , set the BP frome the editor" },
+#endif
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CapsuleComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_BaseMesh;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_TurretMesh;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ProjectileSpawnPoint;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_ProjectileClass;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -90,10 +110,14 @@ struct Z_Construct_UClass_ABasePawn_Statics
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABasePawn_Statics::NewProp_CapsuleComponent = { "CapsuleComponent", nullptr, (EPropertyFlags)0x00100000000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABasePawn, CapsuleComponent), Z_Construct_UClass_UCapsuleComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CapsuleComponent_MetaData), NewProp_CapsuleComponent_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABasePawn_Statics::NewProp_BaseMesh = { "BaseMesh", nullptr, (EPropertyFlags)0x00100000000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABasePawn, BaseMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BaseMesh_MetaData), NewProp_BaseMesh_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABasePawn_Statics::NewProp_TurretMesh = { "TurretMesh", nullptr, (EPropertyFlags)0x00100000000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABasePawn, TurretMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TurretMesh_MetaData), NewProp_TurretMesh_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABasePawn_Statics::NewProp_ProjectileSpawnPoint = { "ProjectileSpawnPoint", nullptr, (EPropertyFlags)0x00100000000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABasePawn, ProjectileSpawnPoint), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ProjectileSpawnPoint_MetaData), NewProp_ProjectileSpawnPoint_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ABasePawn_Statics::NewProp_ProjectileClass = { "ProjectileClass", nullptr, (EPropertyFlags)0x0014000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABasePawn, ProjectileClass), Z_Construct_UClass_UClass, Z_Construct_UClass_AProjectile_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ProjectileClass_MetaData), NewProp_ProjectileClass_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABasePawn_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePawn_Statics::NewProp_CapsuleComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePawn_Statics::NewProp_BaseMesh,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePawn_Statics::NewProp_TurretMesh,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePawn_Statics::NewProp_ProjectileSpawnPoint,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePawn_Statics::NewProp_ProjectileClass,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ABasePawn_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ABasePawn_Statics::DependentSingletons[])() = {
@@ -132,10 +156,10 @@ ABasePawn::~ABasePawn() {}
 struct Z_CompiledInDeferFile_FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h__Script_BattleBlaster_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABasePawn, ABasePawn::StaticClass, TEXT("ABasePawn"), &Z_Registration_Info_UClass_ABasePawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABasePawn), 3800805812U) },
+		{ Z_Construct_UClass_ABasePawn, ABasePawn::StaticClass, TEXT("ABasePawn"), &Z_Registration_Info_UClass_ABasePawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABasePawn), 2268771710U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h__Script_BattleBlaster_1487686834(TEXT("/Script/BattleBlaster"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h__Script_BattleBlaster_3901380164(TEXT("/Script/BattleBlaster"),
 	Z_CompiledInDeferFile_FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h__Script_BattleBlaster_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h__Script_BattleBlaster_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

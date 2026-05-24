@@ -7,6 +7,8 @@
 
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Projectile.h"
+#include "Components/SceneComponent.h"
 
 #include "BasePawn.generated.h"
 
@@ -27,5 +29,15 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* TurretMesh;
+
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* ProjectileSpawnPoint;
+
+	// to access Projectile blueprint in this class , set the BP frome the editor
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AProjectile> ProjectileClass;
+
+	void RotateTurret(FVector LookAtTarget);
+	void Fire();
 
 };

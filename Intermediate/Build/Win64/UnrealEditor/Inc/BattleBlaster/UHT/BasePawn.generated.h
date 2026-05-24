@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class ABasePawn ****************************************************************
 BATTLEBLASTER_API UClass* Z_Construct_UClass_ABasePawn_NoRegister();
 
-#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_16_INCLASS_NO_PURE_DECLS \
+#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABasePawn(); \
 	friend struct Z_Construct_UClass_ABasePawn_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(ABasePawn)
 
 
-#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_16_ENHANCED_CONSTRUCTORS \
+#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_18_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ABasePawn(ABasePawn&&) = delete; \
 	ABasePawn(const ABasePawn&) = delete; \
@@ -40,12 +40,12 @@ public: \
 	NO_API virtual ~ABasePawn();
 
 
-#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_13_PROLOG
-#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_16_GENERATED_BODY \
+#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_15_PROLOG
+#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_16_INCLASS_NO_PURE_DECLS \
-	FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_16_ENHANCED_CONSTRUCTORS \
+	FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_18_INCLASS_NO_PURE_DECLS \
+	FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_BasePawn_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

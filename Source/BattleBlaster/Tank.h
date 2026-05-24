@@ -4,12 +4,17 @@
 #include "BasePawn.h"
 
 #include "GameFramework/SpringArmComponent.h"
-#include "Camera/CameraComponent.h"
-
-#include "InputMappingContext.h"
 #include "EnhancedInputSubsystems.h"
 
+#include "InputAction.h"
+#include "InputActionValue.h"
+#include "EnhancedInputComponent.h"
+
+#include "Kismet/GameplayStatics.h"
+
 #include "Tank.generated.h"
+
+class UInputMappingContext;
 
 /**
  *
@@ -32,9 +37,32 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	// Input mapping Context
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputMappingContext* DefaultMappingContext;
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* MoveAction;
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* TurnAction;
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* FireAction;
+
 	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(VisibleAnywhere)
-	UCameraComponent* CameraComp;
+	class UCameraComponent* CameraComp;
+
+
+	UPROPERTY(EditAnywhere)
+	float Speed = 300;
+
+	UPROPERTY(EditAnywhere)
+	float TurnRate = 50.0f;
+
+	void MoveInput(const FInputActionValue& Value);
+	void TurnInput(const FInputActionValue& Value);
 };

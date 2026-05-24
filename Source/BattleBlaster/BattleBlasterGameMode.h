@@ -4,6 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+
+#include "Tank.h"
+#include "Kismet/GameplayStatics.h"
+#include "Tower.h"
+
 #include "BattleBlasterGameMode.generated.h"
 
 /**
@@ -13,5 +18,11 @@ UCLASS()
 class BATTLEBLASTER_API ABattleBlasterGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+public:
+	ATank* Tank;
+	int32 TowerCount; // when this reaches to zero we'll stop the game and display victory
 	
 };
