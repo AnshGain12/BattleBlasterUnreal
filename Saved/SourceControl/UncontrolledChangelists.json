@@ -6,7 +6,9 @@
 			"description": "Default Uncontrolled Changelist",
 			"files": [
 				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_Tank.uasset",
-				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_Tower.uasset"
+				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_Tower.uasset",
+				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_BattleBlasterPlayerController.uasset",
+				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_GameMode.uasset"
 			]
 		}
 	]

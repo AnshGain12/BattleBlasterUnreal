@@ -58,3 +58,8 @@ void ABasePawn::Fire()
 		}*/
 	}
 }
+
+void ABasePawn::HandleDestruction()
+{
+	UE_LOG(LogTemp, Warning, TEXT("BASEPAWN HANDLE DESTRUCTION"));
+}

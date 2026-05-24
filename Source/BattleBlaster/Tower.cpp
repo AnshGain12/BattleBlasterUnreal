@@ -30,7 +30,7 @@ void ATower::CheckFireCondition()
 	// step 1 -> check whether the tank is valid or not 
 	if (Tank) {
 		// step2 -> check whether the tank is close enough to fire or not
-		if (IsInFireRange()) {
+		if (IsInFireRange() && Tank->IsAlive) {
 			Fire();
 		}
 	}
@@ -50,3 +50,8 @@ bool ATower::IsInFireRange()
 }
 
 
+void ATower::HandleDestruction() {
+	Super::HandleDestruction();
+	UE_LOG(LogTemp, Warning, TEXT("TOWER HANDLE DESTRUCTION"));
+}
+	

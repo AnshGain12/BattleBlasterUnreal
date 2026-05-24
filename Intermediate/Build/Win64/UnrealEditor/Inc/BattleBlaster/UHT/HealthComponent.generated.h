@@ -16,10 +16,18 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+class AActor;
+class AController;
+class UDamageType;
+
 // ********** Begin Class UHealthComponent *********************************************************
+#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execOnDamageTaken);
+
+
 BATTLEBLASTER_API UClass* Z_Construct_UClass_UHealthComponent_NoRegister();
 
-#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_13_INCLASS_NO_PURE_DECLS \
+#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUHealthComponent(); \
 	friend struct Z_Construct_UClass_UHealthComponent_Statics; \
@@ -30,7 +38,7 @@ public: \
 	DECLARE_SERIALIZER(UHealthComponent)
 
 
-#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_13_ENHANCED_CONSTRUCTORS \
+#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_17_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	UHealthComponent(UHealthComponent&&) = delete; \
 	UHealthComponent(const UHealthComponent&) = delete; \
@@ -40,12 +48,13 @@ public: \
 	NO_API virtual ~UHealthComponent();
 
 
-#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_10_PROLOG
-#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_13_GENERATED_BODY \
+#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_14_PROLOG
+#define FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_17_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_13_INCLASS_NO_PURE_DECLS \
-	FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_13_ENHANCED_CONSTRUCTORS \
+	FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_17_INCLASS_NO_PURE_DECLS \
+	FID_Unreal_Game_BattleBlaster_Source_BattleBlaster_HealthComponent_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

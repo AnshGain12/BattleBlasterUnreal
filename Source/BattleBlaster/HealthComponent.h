@@ -4,6 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+
+#include "BattleBlasterGameMode.h"
+#include "Kismet/GameplayStatics.h"
+
 #include "HealthComponent.generated.h"
 
 
@@ -30,5 +34,10 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	float Health;
 
+	ABattleBlasterGameMode* BattleBlasterGameMode;
+
+	// binding this function to the UStaticsPlayStatics delgate called OnTakeAnyDamage
+	UFUNCTION()
+	void OnDamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType,  AController* InstigatedBy, AActor* DamageCauser);
 		
 };

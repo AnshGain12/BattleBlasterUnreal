@@ -21,8 +21,9 @@ void ATank::BeginPlay()
 	// in order to so this we need to first get the access of the player controller, by default from the pawn class we have variable called 'controller'
 	// a controller is a class that is representing you as a player inside of the game world, it is the controller that is controlling the pawn that we have inside of the game 
 
+	PlayerController = Cast<APlayerController>(Controller);
 
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))/* by default Controller is of type pawn */ {
+	if (PlayerController)/* by default Controller is of type pawn */ {
 		// here we are going to get access to the , in order to so this we need to have access to a class called "ULocalPlayer"
 		if (ULocalPlayer* LocalPlayer = PlayerController->GetLocalPlayer()) {
 			if (UEnhancedInputLocalPlayerSubsystem * Subsystem = 
@@ -39,7 +40,7 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	if (APlayerController* PlayerController = Cast<APlayerController>(GetController())) {
+	if (PlayerController) {
 		FHitResult HitResult;
 		PlayerController->GetHitResultUnderCursor(ECC_Visibility,false, HitResult);
 		//DrawDebugSphere(GetWorld(), HitResult.ImpactPoint,25.0,20, FColor::Blue,false);
@@ -78,4 +79,31 @@ void ATank::TurnInput(const FInputActionValue& Value)
 	FRotator DeltaRotation = FRotator(0.0f, 0.0f, 0.0f);
 	DeltaRotation.Yaw = TurnRate * InputValue * DeltaTime;
 	AddActorLocalRotation(DeltaRotation,true);
+}
+
+void ATank::HandleDestruction() {
+	Super::HandleDestruction();
+	//UE_LOG(LogTemp, Warning, TEXT("TANK HANDLE DESTRUCTION"));
+	
+	// destryoing the tank is not ideal bcz with that camera will also get destoryed leading in a weired look in the game so to prevent it we will simply make it invisible 
+
+	SetActorHiddenInGame(true); // but doing this alone is not sufficient bcz still we can fire and take damage , to prevent it we need to stop the Tick() function as well
+	SetActorTickEnabled(false); // apart from it we need to disable input as well 
+	SetPlayerEnabled(false);
+
+}
+
+void ATank::SetPlayerEnabled(bool Enabled)
+{
+	if(PlayerController){
+		if (Enabled) {
+			EnableInput(PlayerController);
+			
+		}
+		else {
+			IsAlive = false;
+			DisableInput(PlayerController);
+		}
+		PlayerController->bShowMouseCursor = Enabled;
+	}
 }

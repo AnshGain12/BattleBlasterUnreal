@@ -24,5 +24,11 @@ protected:
 public:
 	ATank* Tank;
 	int32 TowerCount; // when this reaches to zero we'll stop the game and display victory
+
+	void ActorDied(AActor* DeadActor); // this will be called when tank or towers health become zero and we need to certain things to it
+	UPROPERTY(EditAnywhere)
+	float GameOverDelay = 3.0f;
+
+	void OnGameOverTimerTimeout();
 	
 };

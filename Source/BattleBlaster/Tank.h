@@ -63,6 +63,12 @@ public:
 	UPROPERTY(EditAnywhere)
 	float TurnRate = 50.0f;
 
+	APlayerController* PlayerController;
+	float IsAlive = true; // used it to let the tower know whether the tank is alive or dead, useful in letting know the tower when to shoot
+
 	void MoveInput(const FInputActionValue& Value);
 	void TurnInput(const FInputActionValue& Value);
+
+	void HandleDestruction();
+	void SetPlayerEnabled(bool Enabled);
 };

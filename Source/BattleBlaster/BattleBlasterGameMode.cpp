@@ -2,6 +2,7 @@
 
 
 #include "BattleBlasterGameMode.h"
+#include "TimerManager.h"
 
 void ABattleBlasterGameMode::BeginPlay()
 {
@@ -36,4 +37,58 @@ void ABattleBlasterGameMode::BeginPlay()
 			UE_LOG(LogTemp, Warning, TEXT("casting of pawn to player is unsuccessful!"));
 		}
 	}
+}
+
+void ABattleBlasterGameMode::ActorDied(AActor* DeadActor)
+{
+	bool IsGameOver = false;
+	bool IsVictory = false;
+	// check the type of the actor that died whether it is tank , tower
+	if (DeadActor == Tank) {
+		// tank died
+		IsGameOver = true;
+		Tank->HandleDestruction();
+		//UE_LOG(LogTemp, Warning, TEXT("tank died defeat!"));
+	}
+	else {
+		// tower died
+		UE_LOG(LogTemp, Warning, TEXT("tower died "));
+		// for tower we need to cast the deadActor into tower , we dont need to do it for tank bcz a pointer to it is already there in the class
+		
+		ATower* DeadTower = Cast<ATower>(DeadActor);
+		if (DeadTower) {
+			DeadTower->HandleDestruction();
+			DeadTower->Destroy();
+			TowerCount--;
+			if (!TowerCount) {
+				IsGameOver = true;
+				IsVictory = true;
+				//UE_LOG(LogTemp, Warning, TEXT("Victory"));
+			
+			}
+		}
+
+	}
+	if (IsGameOver) {
+		FString GameOverString = IsVictory ? "Victory" : "Defeat";
+		UE_LOG(LogTemp, Warning, TEXT("Game Over: %s"), *GameOverString);
+		FTimerHandle GameOverTimerHandle;
+		GetWorldTimerManager().SetTimer(
+			GameOverTimerHandle,
+			this,
+			&ABattleBlasterGameMode::OnGameOverTimerTimeout, // call this function when timer gets over
+			GameOverDelay,
+			false
+		);
+	}
+}
+
+void ABattleBlasterGameMode::OnGameOverTimerTimeout()
+{
+	//UE_LOG(LogTemp, Warning, TEXT("Game over timer timerout"));
+
+	// restart the game  -> we will use a function fromm ugameplaystatics class 
+	FString CurrentLevelName = UGameplayStatics::GetCurrentLevelName(GetWorld()); // getting the current level name to pass it to below function so that it can restart the level that we want 
+	UGameplayStatics::OpenLevel(GetWorld(), *CurrentLevelName);
+
 }
