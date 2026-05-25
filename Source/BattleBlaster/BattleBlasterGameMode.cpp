@@ -41,8 +41,7 @@ void ABattleBlasterGameMode::BeginPlay()
 
 void ABattleBlasterGameMode::ActorDied(AActor* DeadActor)
 {
-	bool IsGameOver = false;
-	bool IsVictory = false;
+	
 	// check the type of the actor that died whether it is tank , tower
 	if (DeadActor == Tank) {
 		// tank died
@@ -88,7 +87,22 @@ void ABattleBlasterGameMode::OnGameOverTimerTimeout()
 	//UE_LOG(LogTemp, Warning, TEXT("Game over timer timerout"));
 
 	// restart the game  -> we will use a function fromm ugameplaystatics class 
-	FString CurrentLevelName = UGameplayStatics::GetCurrentLevelName(GetWorld()); // getting the current level name to pass it to below function so that it can restart the level that we want 
-	UGameplayStatics::OpenLevel(GetWorld(), *CurrentLevelName);
 
+	UGameInstance* GameInstance = GetGameInstance(); // we need to cast it battleblastergameinstance in order to use the  functionality
+	if (GameInstance) {
+		UBattleBlasterGameInstance* BattleBlasterGameInstance = Cast<UBattleBlasterGameInstance>(GameInstance);
+		if (BattleBlasterGameInstance) {
+			// call to load next level 
+			if (IsVictory) {
+				// load next level when we win
+				BattleBlasterGameInstance->LoadNextLevel();
+			}
+			else {
+				// restart the current level when we loose
+
+				//FString CurrentLevelName = UGameplayStatics::GetCurrentLevelName(GetWorld()); // getting the current level name to pass it to below function so that it can restart the level that we want 
+				BattleBlasterGameInstance->RestartCurrentLevel();
+			}
+		}
+	}
 }

@@ -8,6 +8,7 @@
 #include "Tank.h"
 #include "Kismet/GameplayStatics.h"
 #include "Tower.h"
+#include "BattleBlasterGameInstance.h"
 
 #include "BattleBlasterGameMode.generated.h"
 
@@ -25,10 +26,14 @@ public:
 	ATank* Tank;
 	int32 TowerCount; // when this reaches to zero we'll stop the game and display victory
 
+	bool IsGameOver = false;
+	bool IsVictory = false;
+
 	void ActorDied(AActor* DeadActor); // this will be called when tank or towers health become zero and we need to certain things to it
 	UPROPERTY(EditAnywhere)
 	float GameOverDelay = 3.0f;
 
 	void OnGameOverTimerTimeout();
+
 	
 };

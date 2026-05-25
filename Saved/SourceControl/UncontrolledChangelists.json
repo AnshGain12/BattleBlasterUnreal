@@ -8,7 +8,10 @@
 				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_Tank.uasset",
 				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_Tower.uasset",
 				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_BattleBlasterPlayerController.uasset",
-				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_GameMode.uasset"
+				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_GameMode.uasset",
+				"C:/Unreal_Game/BattleBlaster/Content/Blueprints/BP_BattleBlasterGameInstance.uasset",
+				"C:/Unreal_Game/BattleBlaster/Content/Maps/Level_2.umap",
+				"C:/Unreal_Game/BattleBlaster/Content/Maps/Level_3.umap"
 			]
 		}
 	]
